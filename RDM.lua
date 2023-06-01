@@ -5,29 +5,29 @@ include("organizer-lib")
     Text Undulation color 50 230 20;
 
     ROAD MAP
-	
-	Ranged Attacks
-	
-	Keybinds
-	
-	Organize Vars and Functions
+    
+    Ranged Attacks
+    
+    Keybinds
+    
+    Organize Vars and Functions
     
     create handling for spirit/avatar perpetuation cost gear locking/idling while /SMN
 ]]--
 
 function get_sets()
 
-	-------------------------------
-	--     Player Configured     --
-	--         Variables         --
-	-------------------------------
-	
-	
-	BaseMP = 594 -- Your MP, naked, with a subjob that has no MP.
+    -------------------------------
+    --     Player Configured     --
+    --         Variables         --
+    -------------------------------
+    
+    
+    BaseMP = 594 -- Your MP, naked, with a subjob that has no MP.
  -- #SubjobVars - Search this hashtag to reach the Subjob configuration settings
-	ConvertMerits = 5 -- Number of upgrades to Convert Recast
+    ConvertMerits = 5 -- Number of upgrades to Convert Recast
     FPSMode = 60 -- change to 30 if using 30 FPS mode
-	send_command('config FrameRateDivisor 1') -- 60 FPS. Switch to 2, to default to 30 FPS
+    send_command('config FrameRateDivisor 1') -- 60 FPS. Switch to 2, to default to 30 FPS
 
     local Status_X = 1169
     local Status_Y = 93
@@ -38,7 +38,7 @@ function get_sets()
     Selector_X = Menu_X - 20
     Selector_Y = Menu_Y + 40
     
-	-- Default Menu settings and positions
+    -- Default Menu settings and positions
     Menu = "Weapons"
     Weapon = "MP"
     MeleeGear = "AccuracyHaste"
@@ -49,13 +49,13 @@ function get_sets()
     ElementalMode = "Macc"
     ForceSwapThreshold = 0
 
-	-------------------------------
-	--         Build Menu        --
-	--       and Status Bar      --
-	-------------------------------
+    -------------------------------
+    --         Build Menu        --
+    --       and Status Bar      --
+    -------------------------------
 
     send_command('wait .000;Text Status      create;wait .001;Text Status      pos '..  Status_X..' '..  Status_Y       ..';wait .001;Text Status      color 230  50   0;wait .001;Text Status      bg_alpha 255;wait .001;Text Status      size 30;wait .001;Text Status      font "Courier New";wait .001;Text Status      bold true')
-	send_command('wait .007;Text Sublimation create;wait .001;Text Sublimation pos '..    Menu_X..' '..    Menu_Y       ..';wait .001;Text Sublimation color 200 200 200;wait .001;Text Sublimation bg_alpha 190;wait .001;Text Sublimation size 14;wait .001;Text Sublimation font "Courier New";wait .001;Text Sublimation bold true')
+    send_command('wait .007;Text Sublimation create;wait .001;Text Sublimation pos '..    Menu_X..' '..    Menu_Y       ..';wait .001;Text Sublimation color 200 200 200;wait .001;Text Sublimation bg_alpha 190;wait .001;Text Sublimation size 14;wait .001;Text Sublimation font "Courier New";wait .001;Text Sublimation bold true')
     send_command('wait .014;Text Undulation  create;wait .001;Text Undulation  pos '..    Menu_X..' '..    Menu_Y +  23 ..';wait .001;Text Undulation  color 50  230  20;wait .001;Text Undulation  bg_alpha 190;wait .001;Text Undulation  size 14;wait .001;Text Undulation  font "Courier New";wait .001;Text Undulation  bold true')
     send_command('wait .021;Text Weapons     create;wait .001;Text Weapons     pos '..    Menu_X..' '..    Menu_Y +  45 ..';wait .001;Text Weapons     color 200 200 200;wait .001;Text Weapons     bg_alpha 190;wait .001;Text Weapons     size 14;wait .001;Text Weapons     font "Courier New";wait .001;Text Weapons     bold true')
     send_command('wait .028;Text Gearset     create;wait .001;Text Gearset     pos '..    Menu_X..' '..    Menu_Y +  68 ..';wait .001;Text Gearset     color 200 200 200;wait .001;Text Gearset     bg_alpha 190;wait .001;Text Gearset     size 14;wait .001;Text Gearset     font "Courier New";wait .001;Text Gearset     bold true')
@@ -68,10 +68,10 @@ function get_sets()
     send_command('wait .077;Text Selector    create;wait .001;Text Selector    pos '..Selector_X..' '..Selector_Y       ..';wait .001;Text Selector    color 200 200 200;wait .001;Text Selector    bg_alpha   0;wait .001;Text Selector    size 20;wait .001;Text Selector    font "Courier New";wait .001;Text Selector    bold true')
     send_command('wait .084;Text Selector    text >')
 
-	-------------------------------
-	--          Hot Keys         --
-	-------------------------------
-	
+    -------------------------------
+    --          Hot Keys         --
+    -------------------------------
+    
     send_command('wait .100;Keyboard_Bind Pause gs c ToggleUndulations;') -- Pause Key Toggles UndulationsEnabled
     send_command('wait .101;Keyboard_Bind !Pageup gs c PrevMenu;')        -- Alt + PageUp   moves menu cursor Up
     send_command('wait .102;Keyboard_Bind !Pagedown gs c NextMenu;')      -- Alt + PageDown moves menu cursor Down
@@ -79,27 +79,27 @@ function get_sets()
     send_command('wait .104;Keyboard_Bind !End gs c ++;')                 -- Alt + End      shifts menu value to the right
 
 --[[
-	Keyboard_Bind !z gs c PDT
-	Keyboard_Bind !x gs c MDT
+    Keyboard_Bind !z gs c PDT
+    Keyboard_Bind !x gs c MDT
 
 
     Keyboard_Bind ^5 gs c FPS30
     Keyboard_Bind ^6 gs c FPS60
 
 
-	Keyboard_Bind @1 gs c TaruModeOn
-	Keyboard_Bind @2 gs c TaruModeOff
-	Keyboard_Bind !^1 gs c MPLock;
-	Keyboard_Bind !^2 gs c Reset;
-	Keyboard_Bind !^3 gs c Convert;gs disable all;wait 15;gs enable all;
-	Keyboard_Bind !^9 gs c ToggleEmergencyTank
-	Keyboard_Bind ^insert gs c MenuOn
-	Keyboard_Bind !insert gs c MenuOff
+    Keyboard_Bind @1 gs c TaruModeOn
+    Keyboard_Bind @2 gs c TaruModeOff
+    Keyboard_Bind !^1 gs c MPLock;
+    Keyboard_Bind !^2 gs c Reset;
+    Keyboard_Bind !^3 gs c Convert;gs disable all;wait 15;gs enable all;
+    Keyboard_Bind !^9 gs c ToggleEmergencyTank
+    Keyboard_Bind ^insert gs c MenuOn
+    Keyboard_Bind !insert gs c MenuOff
 --]]
 
-	-------------------------------
-	--     Internal Variables    --
-	-------------------------------
+    -------------------------------
+    --     Internal Variables    --
+    -------------------------------
     if     player.status == "Idle" then
         undulationFrequency = 450
     elseif player.status == "Resting" then
@@ -143,14 +143,14 @@ function get_sets()
     MeleeMode = "Off"
     FencerSwapTPThreshold = 910
     EmergencyTank = "Off"
-	EmergencyTankMemory = {}
-	TaruMode = "Off"
+    EmergencyTankMemory = {}
+    TaruMode = "Off"
     
-	-- Check for Weakness on startup
-	if buffactive['weakness'] then Weakened = (BaseMP + SubJobMP) * .75
-	else                           Weakened = 0                         end
-	-- Check for Subjob Restriction on startup
-	if buffactive['SJ Restriction'] then SubJobMP = 0
+    -- Check for Weakness on startup
+    if buffactive['weakness'] then Weakened = (BaseMP + SubJobMP) * .75
+    else                           Weakened = 0                         end
+    -- Check for Subjob Restriction on startup
+    if buffactive['SJ Restriction'] then SubJobMP = 0
     else                                 set_SubJobVars(player.sub_job) end
     
     Weaknesses = {}
@@ -163,11 +163,11 @@ function get_sets()
     Weaknesses['Light'] = 'Dark'
     Weaknesses['Dark'] = 'Light'
 
-	-------------------------------
+    -------------------------------
     --                           --
-	--         Gear Sets         --
+    --         Gear Sets         --
     --                           --
-	-------------------------------
+    -------------------------------
 
     sets.IdleSet = {}
     sets.lockstyle = {}
@@ -395,7 +395,7 @@ function get_sets()
 --           Idle           --
 --                          --
 ------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
+    -- sets.Weapons.Earth used in main slot when not in melee mode
     -- MP:991 | Refresh: 2 | MDB + 5 | PDT -20% --
     sets.idle[0] = set_combine(sets.MaxMP,  {head="Dls. Chapeau +1"})
     sets.idle[0].MP = sets.MaxMP.MP - (sets.MaxMP.headMP - 14)
@@ -430,7 +430,7 @@ function get_sets()
 --         PDT idle         --
 --                          --
 ------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
+    -- sets.Weapons.Earth used in main slot when not in melee mode
     -- MP:991 | Refresh: 2 | MDB + 5 | PDT -20% --
     sets.PDTidle[0] = set_combine(sets.MaxMP,     {head="Dls. Chapeau +1"})
     sets.PDTidle[0].MP = sets.MaxMP.MP      - (sets.MaxMP.headMP - 14)
@@ -465,7 +465,7 @@ function get_sets()
 --         MDT idle         --
 --                          --
 ------------------------------
-	-- sets.Weapons.MDB used in main slot when not in melee mode
+    -- sets.Weapons.MDB used in main slot when not in melee mode
     -- MP:991 | Refresh: 2 | MDB +10 --
     sets.MDTidle[0] = set_combine(sets.MaxMP,     {head="Dls. Chapeau +1"})
     sets.MDTidle[0].MP = sets.MaxMP.MP      - (sets.MaxMP.headMP - 14)
@@ -503,8 +503,8 @@ function get_sets()
 --   Physical Damage Taken   --
 --                           --
 -------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
-	-- Additional PDT -3% when not moving
+    -- sets.Weapons.Earth used in main slot when not in melee mode
+    -- Additional PDT -3% when not moving
     -- MP:977 | PDT -26%/32% --
     sets.PDT[0] = set_combine(sets.MaxMP, {back="Umbra Cape"})
     sets.PDT[0].MP = sets.MaxMP.MP  - (sets.MaxMP.backMP - 0)
@@ -523,32 +523,32 @@ function get_sets()
     -- MP:827 | PDT -41%/48% --
     sets.PDT[5] = set_combine(sets.PDT[4],{body="Dst. Harness +1"})
     sets.PDT[5].MP = sets.PDT[4].MP - (sets.MaxMP.bodyMP - 0)
-	
-	
+    
+    
 -------------------------------
 --                           --
 --        Fast Pants         --
 --                           --
 -------------------------------
     sets.FastPants = {legs="Blood Cuisses"}
-	
-	
+    
+    
 -------------------------------
 --                           --
 --       Fencer's Ring       --
 --                           --
 -------------------------------
     sets.FencerRing = {rring="Toreador's Ring", lring="Fencer's Ring"}
-	
-	
+    
+    
 -------------------------------
 --                           --
 --      Balrahn's Ring       --
 --  Use this if you have it  --
 -------------------------------
     sets.BalrahnRing = {rring="Balrahn's Ring"}
-	
-	
+    
+    
 -------------------------------
 --      Urgent Refresh       --
 -- This set overrides Melee  --
@@ -563,7 +563,7 @@ function get_sets()
 --     Magic Damage Taken    --
 --                           --
 -------------------------------
-	-- sets.Weapons.MDB used in main slot when not in melee mode
+    -- sets.Weapons.MDB used in main slot when not in melee mode
     --MP:1002 | MDT - 0% | MDB +13 --
     sets.MDT[0] = set_combine(sets.MaxMP, {back="Lamia Mantle"})
     sets.MDT[0].MP = sets.MaxMP.MP  - (sets.MaxMP.backMP - 24)
@@ -601,7 +601,7 @@ function get_sets()
 --        Conserve MP       --
 --                          --
 ------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
+    -- sets.Weapons.Earth used in main slot when not in melee mode
     --MP:1000 | Conserve MP +5 | PDT -23% --
     sets.midcast.ConserveMP[0] = set_combine(sets.MaxMP,                {body="Goliard Saio"})
     sets.midcast.ConserveMP[0].MP = sets.MaxMP.MP                 - (sets.MaxMP.bodyMP - 42)
@@ -646,7 +646,7 @@ function get_sets()
 --           Haste           --
 --                           --
 -------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
+    -- sets.Weapons.Earth used in main slot when not in melee mode
     --MP:1004 | FastCast 20% | Haste  9% | PDT -20% --
     sets.midcast.Haste[0] = set_combine(sets.MaxMP,           {body="Goliard Saio"})
     sets.midcast.Haste[0].MP = sets.MaxMP.MP            - (sets.MaxMP.bodyMP - 42)
@@ -952,7 +952,7 @@ function get_sets()
 --         Enhancing         --
 --                           --
 -------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
+    -- sets.Weapons.Earth used in main slot when not in melee mode
     --MP:1012 | Enhancing Skill +15 | PDT -20% --
     sets.midcast.Enhancing[0] = set_combine(sets.MaxMP,               {hands="Dls. Gloves +1"})
     sets.midcast.Enhancing[0].MP = sets.MaxMP.MP                - (sets.MaxMP.handsMP - 23)
@@ -1213,7 +1213,7 @@ function get_sets()
 --         Stoneskin         --
 --                           --
 -------------------------------
-	-- sets.Weapons.Earth used in main slot when not in melee mode
+    -- sets.Weapons.Earth used in main slot when not in melee mode
     -- MP:999 | MND + 0 | Enhancing Skill +15 | Haste + 9% --
     sets.midcast.Stoneskin[0] = set_combine(sets.MaxMP,               {body="Goliard Saio"})
     sets.midcast.Stoneskin[0].MP = sets.MaxMP.MP                - (sets.MaxMP.bodyMP - 42)
@@ -1378,7 +1378,7 @@ function get_sets()
 --          Enmity           --
 --                           --
 -------------------------------
-	-- sets.Weapons.Enmity used in main slot when not in melee mode
+    -- sets.Weapons.Enmity used in main slot when not in melee mode
     -- MP:999 | Enmity + 1 | Haste + 5% --
     sets.midcast.Enmity[0] = set_combine(sets.MaxMP,            {ear1="Hades Earring +1"})
     sets.midcast.Enmity[0].MP = sets.MaxMP.MP             - (sets.MaxMP.ear1MP - 0)
@@ -1502,8 +1502,8 @@ function get_sets()
     sets.AccHaste[10]= set_combine(sets.AccHaste[9],{ammo="Astrolabe"})
     sets.AccHaste[10].MP= sets.AccHaste[9].MP - (sets.MaxMP.ammoMP - 0)
     -- MP:666 | Haste 23% | Accuracy +41 | Attack + 9 | Sword Skill + 5 | Double Attack +5% or Attack + 6 --
-	
-	-- These last 2 swaps are enabled/disabled by the menu --
+    
+    -- These last 2 swaps are enabled/disabled by the menu --
     sets.AccHaste[11]= set_combine(sets.AccHaste[10],{rring="Toreador's Ring", lring="Toreador's Ring"})
     sets.AccHaste[11].MP= sets.AccHaste[10].MP -- no change
     -- MP:666 | Haste 19% | Accuracy +53 | Attack + 9 | Sword Skill + 5 | Double Attack +5% or Attack + 6 --
@@ -2169,22 +2169,22 @@ function configureTPsets()
         sets.PDTMelee[12]= set_combine(sets.PDTMelee[11],{ear2="Optical Earring"})
         
     end
-		
-	sets.Accuracy[9].MP = sets.Accuracy[8].MP - (sets.MaxMP.ear1MP - 0)
-	sets.Accuracy[10].MP= sets.Accuracy[9].MP - (sets.MaxMP.ear2MP - 0)
-	sets.Accuracy[11].MP= sets.Accuracy[10].MP- (sets.MaxMP.ammoMP - 0)
-	sets.AccHaste[8].MP = sets.AccHaste[7].MP - (sets.MaxMP.ear1MP - 0)
-	sets.AccHaste[9].MP = sets.AccHaste[8].MP - (sets.MaxMP.ear2MP - 0)
-	sets.AccHaste[10].MP= sets.AccHaste[9].MP - (sets.MaxMP.ammoMP - 0)
-	sets.AccHaste[11]= set_combine(sets.AccHaste[10],{rring="Toreador's Ring", lring="Toreador's Ring"})
-	sets.AccHaste[11].MP= sets.AccHaste[10].MP- (sets.MaxMP.lringMP - 0) - (sets.MaxMP.rringMP - 0)
-	sets.AccHaste[12]= set_combine(sets.AccHaste[11],{body="Scp. Harness +1"})
-	sets.AccHaste[12].MP= sets.AccHaste[11].MP- (sets.MaxMP.bodyMP - 0)
-	sets.PDTHaste[8].MP = sets.PDTHaste[7].MP - (sets.MaxMP.ear1MP - 0)
-	sets.PDTHaste[9].MP = sets.PDTHaste[8].MP - (sets.MaxMP.ear2MP - 0)
-	sets.PDTHaste[10].MP= sets.PDTHaste[9].MP - (sets.MaxMP.ammoMP - 0)
-	sets.PDTMelee[11].MP= sets.PDTMelee[10].MP- (sets.MaxMP.ear1MP - 0)
-	sets.PDTMelee[12].MP= sets.PDTMelee[11].MP- (sets.MaxMP.ear2MP - 0)
+        
+    sets.Accuracy[9].MP = sets.Accuracy[8].MP - (sets.MaxMP.ear1MP - 0)
+    sets.Accuracy[10].MP= sets.Accuracy[9].MP - (sets.MaxMP.ear2MP - 0)
+    sets.Accuracy[11].MP= sets.Accuracy[10].MP- (sets.MaxMP.ammoMP - 0)
+    sets.AccHaste[8].MP = sets.AccHaste[7].MP - (sets.MaxMP.ear1MP - 0)
+    sets.AccHaste[9].MP = sets.AccHaste[8].MP - (sets.MaxMP.ear2MP - 0)
+    sets.AccHaste[10].MP= sets.AccHaste[9].MP - (sets.MaxMP.ammoMP - 0)
+    sets.AccHaste[11]= set_combine(sets.AccHaste[10],{rring="Toreador's Ring", lring="Toreador's Ring"})
+    sets.AccHaste[11].MP= sets.AccHaste[10].MP- (sets.MaxMP.lringMP - 0) - (sets.MaxMP.rringMP - 0)
+    sets.AccHaste[12]= set_combine(sets.AccHaste[11],{body="Scp. Harness +1"})
+    sets.AccHaste[12].MP= sets.AccHaste[11].MP- (sets.MaxMP.bodyMP - 0)
+    sets.PDTHaste[8].MP = sets.PDTHaste[7].MP - (sets.MaxMP.ear1MP - 0)
+    sets.PDTHaste[9].MP = sets.PDTHaste[8].MP - (sets.MaxMP.ear2MP - 0)
+    sets.PDTHaste[10].MP= sets.PDTHaste[9].MP - (sets.MaxMP.ammoMP - 0)
+    sets.PDTMelee[11].MP= sets.PDTMelee[10].MP- (sets.MaxMP.ear1MP - 0)
+    sets.PDTMelee[12].MP= sets.PDTMelee[11].MP- (sets.MaxMP.ear2MP - 0)
 
 end
 
@@ -2196,8 +2196,8 @@ function precast(spell)
     IdleSetName = ""
 
     if EnmityMode == "Off" and
-	   CastingSpell == 0 and
-	   player.status == 'Engaged' and 
+       CastingSpell == 0 and
+       player.status == 'Engaged' and 
       (string.find(spell.type,'Magic') or
        string.find(spell.type,'Ninjutsu') or
        string.find(spell.type,'Summon')) then
@@ -2269,22 +2269,22 @@ function precast(spell)
             elseif                              player.mp <= BaseMP + sets.midcast.Enmity[0].MP  + SubJobMP - Weakened then equip(sets.midcast.Enmity[0]) end
         
         end
-		
-	elseif spell.english == "Sublimation" then
-	
-		if buffactive['Sublimation: Activated'] or buffactive['Sublimation: Complete'] then
-		
-			send_command('wait .00;Text Sublimation text ""')
-			send_command('wait .01;Text Sublimation color 200 200 200')
-			send_command('wait .02;Text Sublimation bg_color 0 0 0')
-			
-		else
-		
-			send_command('wait .000;Text Sublimation text ""')
-			send_command('wait .001;Text Sublimation color 240 80 40')
-			send_command('wait .002;Text Sublimation bg_color 20 20 120')
-		
-		end
+        
+    elseif spell.english == "Sublimation" then
+    
+        if buffactive['Sublimation: Activated'] or buffactive['Sublimation: Complete'] then
+        
+            send_command('wait .00;Text Sublimation text ""')
+            send_command('wait .01;Text Sublimation color 200 200 200')
+            send_command('wait .02;Text Sublimation bg_color 0 0 0')
+            
+        else
+        
+            send_command('wait .000;Text Sublimation text ""')
+            send_command('wait .001;Text Sublimation color 240 80 40')
+            send_command('wait .002;Text Sublimation bg_color 20 20 120')
+        
+        end
         
     elseif CastingSpell == 0 and
           (string.find(spell.type,'Magic') or 
@@ -2292,7 +2292,7 @@ function precast(spell)
            string.find(spell.type,'Summon')) then -- #FastCast
     
         if     EnmityMode == "Off" and (ForceSwapThreshold >= 25 or player.mp <= BaseMP + sets.precast.fastcast.MP + sets.Weapons[Weapon].MP + SubJobMP - Weakened) then equip(set_combine(sets.MaxMP, sets.precast.fastcast)) 
-		elseif EnmityMode == "On"                                                                                                                                   then equip(                        sets.precast.fastcast)  end
+        elseif EnmityMode == "On"                                                                                                                                   then equip(                        sets.precast.fastcast)  end
         
     elseif spell.english == 'Convert' then
         
@@ -2393,9 +2393,9 @@ function midcast(spell)
                 elseif player.mp <= BaseMP + sets.midcast.MGS[0].MP + SubJobMP - Weakened then equip(sets.midcast.MGS[0]) end
                 
             elseif spell.english == 'Stoneskin' and 
-			      (EnmityMode == "Off" or 
-				   player.status == 'Idle' or 
-				   Utsusemi_Check() == true) then -- #Stoneskin
+                  (EnmityMode == "Off" or 
+                   player.status == 'Idle' or 
+                   Utsusemi_Check() == true) then -- #Stoneskin
             
                 if     player.mp <= BaseMP + sets.MaxMP.MP + sets.Weapons.Earth.MP + SubJobMP - Weakened and MeleeMode == "Off" then equip(sets.Weapons.Earth)
                 elseif                                                                                       MeleeMode == "Off" then equip(sets.Weapons.MP) end
@@ -2434,8 +2434,8 @@ function midcast(spell)
                 else
                 
                     if EnfeebleMode == "Potency/Haste" and 
-					  (string.find(spell.english,'Slow') or 
-					   string.find(spell.english,'Paralyze')) then -- #EMNDPotency
+                      (string.find(spell.english,'Slow') or 
+                       string.find(spell.english,'Paralyze')) then -- #EMNDPotency
         
                         if                                  player.mp <= BaseMP + sets.midcast.EMNDPotency[12].MP + SubJobMP - Weakened then equip(sets.midcast.EMNDPotency[12])
                         elseif ForceSwapThreshold == 100 or player.mp <= BaseMP + sets.midcast.EMNDPotency[11].MP + SubJobMP - Weakened then equip(sets.midcast.EMNDPotency[11])
@@ -2705,8 +2705,8 @@ function midcast(spell)
             end
         
         elseif spell.skill == "Dark Magic" and EnmityMode == "Off" then
-		
-			local AspirBuffer = 0
+        
+            local AspirBuffer = 0
             
             if spell.english == "Tractor" then -- #ConserveMP
             
@@ -2888,7 +2888,7 @@ function aftercast(spell)
 
     if spell.english ~= 'Convert' then
     
-		equip(sets.MaxMP)
+        equip(sets.MaxMP)
         send_command('wait .2;gs c Determine_Idle_Set')
         
     end
@@ -2913,7 +2913,7 @@ function status_change(new,old)
     
     if FPSMode == 30 then undulationFrequency = undulationFrequency * .5 end
     
-	equip(sets.MaxMP)
+    equip(sets.MaxMP)
     send_command('wait .2;gs c Determine_Idle_Set')
     
 end
@@ -2974,9 +2974,9 @@ function self_command(command)
     elseif command == 'MPLock' then
     
         if MeleeMode == "Off" then equip(sets.Weapons.MP) end
-		
-		if TaruMode == "Off" then equip(sets.MaxMP)
-		else                      equip(sets.TaruMP) end
+        
+        if TaruMode == "Off" then equip(sets.MaxMP)
+        else                      equip(sets.TaruMP) end
     
         if LockMP == 1 then
             
@@ -2993,7 +2993,7 @@ function self_command(command)
         equip(sets.TaruMP)
         
         TaruMode = "On"
-		
+        
         undulate.counter = 0
         
     elseif command == 'TaruModeOff' then
@@ -3008,10 +3008,10 @@ function self_command(command)
     elseif command == 'ToggleEmergencyTank' then
     
         if EmergencyTank == 'Off' then
-			EmergencyTankMemory = {MemberElementalMode = ElementalMode,
-								   MemberEnfeebleMode = EnfeebleMode,
-								   MemberMeleeGear = MeleeGear,
-								   MemberEnmityMode = EnmityMode}
+            EmergencyTankMemory = {MemberElementalMode = ElementalMode,
+                                   MemberEnfeebleMode = EnfeebleMode,
+                                   MemberMeleeGear = MeleeGear,
+                                   MemberEnmityMode = EnmityMode}
             ElementalMode = "Macc"
             EnfeebleMode = "Macc"
             MeleeGear = "Brick"
@@ -3160,8 +3160,8 @@ function self_command(command)
             end
             
         elseif Menu == 'Tuning' then
-		
-			if HasteAccTuning < 2 then HasteAccTuning = HasteAccTuning + 1 end
+        
+            if HasteAccTuning < 2 then HasteAccTuning = HasteAccTuning + 1 end
         
         elseif Menu == 'Enmity' then
     
@@ -3264,8 +3264,8 @@ function self_command(command)
             end
             
         elseif Menu == 'Tuning' then
-		
-			if HasteAccTuning > 0 then HasteAccTuning = HasteAccTuning - 1 end
+        
+            if HasteAccTuning > 0 then HasteAccTuning = HasteAccTuning - 1 end
             
         elseif Menu == 'Enmity' then
     
@@ -3298,12 +3298,12 @@ function self_command(command)
     elseif command == 'FPS30' then
     
         FPSMode = 30
-		send_command('config FrameRateDivisor 2')
+        send_command('config FrameRateDivisor 2')
     
     elseif command == 'FPS60' then
     
         FPSMode = 60
-		send_command('config FrameRateDivisor 1')
+        send_command('config FrameRateDivisor 1')
     
     elseif command == 'Determine_Idle_Set' then
     
@@ -3387,8 +3387,8 @@ windower.raw_register_event('prerender',function()
 
     undulate.counter = undulate.counter + 1
     mov.counter = mov.counter + 1
-	--if player.sub_job == "SCH" then Sublimation.counter = Sublimation.counter + 1 end
-	Sublimation.counter = Sublimation.counter + 1
+    --if player.sub_job == "SCH" then Sublimation.counter = Sublimation.counter + 1 end
+    Sublimation.counter = Sublimation.counter + 1
     
     if mov.counter>10 then
         local pl = windower.ffxi.get_mob_by_index(player.index)
@@ -3409,97 +3409,97 @@ windower.raw_register_event('prerender',function()
         end
         mov.counter = 0
     end
-	
-	
-	if (FPSMode == 30 and Sublimation.counter >= 90) or (FPSMode==60 and Sublimation.counter >= 180) then
-		
-		if     buffactive['Sublimation: Activated'] then
-		
-			local ChargeDelta =  0
-			SublimationCharge = math.floor((os.time() - SublimationStarted) / 3) * 2
+    
+    
+    if (FPSMode == 30 and Sublimation.counter >= 90) or (FPSMode==60 and Sublimation.counter >= 180) then
+        
+        if     buffactive['Sublimation: Activated'] then
+        
+            local ChargeDelta =  0
+            SublimationCharge = math.floor((os.time() - SublimationStarted) / 3) * 2
 
-			if     SublimationCharge <= 130 then -- Text Sublimation color 240 80 40
-			
-				ChargeDelta = SublimationCharge / 130
-				
-				RedBG    = 240 + (255 - 240) * ChargeDelta
-				YellowBG =  80 + (255 -  80) * ChargeDelta
-				BlueBG   =  40
-				
-				send_command('Text Sublimation color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Red Text to Yellow Text
-				send_command('Text Sublimation bg_color 20 20 120') -- Blue Background
-			
-			elseif SublimationCharge <= 260 then -- Text Sublimation color 255 255 40
-			
-				ChargeDelta = (SublimationCharge - 130) / 130
-				
-				RedBG    = 255 - (255 -  60) * ChargeDelta
-				YellowBG = 255 - (255 - 230) * ChargeDelta
-				BlueBG   =  40
-				
-				send_command('Text Sublimation color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Yellow Text to Green Text
-				send_command('Text Sublimation bg_color 20 20 120') -- Blue Background
-			
-			else -- Text Sublimation color 60 230 40
-				
-				send_command('Text Sublimation color 60 230 40') -- Green Text
-				send_command('Text Sublimation bg_color 20 20 120') -- Blue Background
-			
-			end
-			
-		elseif buffactive['Sublimation: Complete'] then
-		
-			local ChargeDelta = SublimationCharge / 260
-		
-			if ChargeDelta > .35 and ChargeDelta < .65 then send_command('Text Sublimation color 255 255 255') -- White Text
-			else                                            send_command('Text Sublimation color 200 200 200') end -- Light Grey Text
+            if     SublimationCharge <= 130 then -- Text Sublimation color 240 80 40
+            
+                ChargeDelta = SublimationCharge / 130
+                
+                RedBG    = 240 + (255 - 240) * ChargeDelta
+                YellowBG =  80 + (255 -  80) * ChargeDelta
+                BlueBG   =  40
+                
+                send_command('Text Sublimation color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Red Text to Yellow Text
+                send_command('Text Sublimation bg_color 20 20 120') -- Blue Background
+            
+            elseif SublimationCharge <= 260 then -- Text Sublimation color 255 255 40
+            
+                ChargeDelta = (SublimationCharge - 130) / 130
+                
+                RedBG    = 255 - (255 -  60) * ChargeDelta
+                YellowBG = 255 - (255 - 230) * ChargeDelta
+                BlueBG   =  40
+                
+                send_command('Text Sublimation color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Yellow Text to Green Text
+                send_command('Text Sublimation bg_color 20 20 120') -- Blue Background
+            
+            else -- Text Sublimation color 60 230 40
+                
+                send_command('Text Sublimation color 60 230 40') -- Green Text
+                send_command('Text Sublimation bg_color 20 20 120') -- Blue Background
+            
+            end
+            
+        elseif buffactive['Sublimation: Complete'] then
+        
+            local ChargeDelta = SublimationCharge / 260
+        
+            if ChargeDelta > .35 and ChargeDelta < .65 then send_command('Text Sublimation color 255 255 255') -- White Text
+            else                                            send_command('Text Sublimation color 200 200 200') end -- Light Grey Text
 
-			if     SublimationCharge <= 130 then -- Text Sublimation bg_color 130 20 20
-			
-				ChargeDelta = SublimationCharge / 130
-				
-				RedBG    = 130 + (150 - 130) * ChargeDelta
-				YellowBG =  20 + (150 -  20) * ChargeDelta
-				BlueBG   =  20
-				
-				send_command('Text Sublimation bg_color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Red Background to Yellow Background
-			
-			elseif SublimationCharge <= 260 then -- Text Sublimation bg_color 150 150 20
-			
-				ChargeDelta = (SublimationCharge - 130) / 130
-				
-				RedBG    = 150 - (150 -  30) * ChargeDelta
-				YellowBG = 150 - (150 - 100) * ChargeDelta
-				BlueBG   =  20
-				
-				send_command('Text Sublimation bg_color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Yellow Background to Green Background
-			
-			else -- Text Sublimation bg_color 30 100 20
-				
-				send_command('Text Sublimation bg_color 30 100 20') -- Green Background
-			
-			end
-		
-		else
-		
-			SublimationCharge = 0
-			
-			--send_command('Text Sublimation bg_color 0 0 0')
-		
-		end
-		
-		if MenuEnabled == 1 then
-		
-			if     SublimationCharge ==  0 then send_command('Text Sublimation text ""')
-			elseif SublimationCharge <  10 then send_command('Text Sublimation text "       ' .. SublimationCharge .. 'mp     "')
-			elseif SublimationCharge < 100 then send_command('Text Sublimation text "      ' .. SublimationCharge .. 'mp     "')
-			else                                send_command('Text Sublimation text "     ' .. SublimationCharge .. 'mp     "') end
-			
-		end
-		
-		Sublimation.counter = 0
-	
-	end
+            if     SublimationCharge <= 130 then -- Text Sublimation bg_color 130 20 20
+            
+                ChargeDelta = SublimationCharge / 130
+                
+                RedBG    = 130 + (150 - 130) * ChargeDelta
+                YellowBG =  20 + (150 -  20) * ChargeDelta
+                BlueBG   =  20
+                
+                send_command('Text Sublimation bg_color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Red Background to Yellow Background
+            
+            elseif SublimationCharge <= 260 then -- Text Sublimation bg_color 150 150 20
+            
+                ChargeDelta = (SublimationCharge - 130) / 130
+                
+                RedBG    = 150 - (150 -  30) * ChargeDelta
+                YellowBG = 150 - (150 - 100) * ChargeDelta
+                BlueBG   =  20
+                
+                send_command('Text Sublimation bg_color ' .. RedBG .. ' ' .. YellowBG .. ' ' .. BlueBG) -- Yellow Background to Green Background
+            
+            else -- Text Sublimation bg_color 30 100 20
+                
+                send_command('Text Sublimation bg_color 30 100 20') -- Green Background
+            
+            end
+        
+        else
+        
+            SublimationCharge = 0
+            
+            --send_command('Text Sublimation bg_color 0 0 0')
+        
+        end
+        
+        if MenuEnabled == 1 then
+        
+            if     SublimationCharge ==  0 then send_command('Text Sublimation text ""')
+            elseif SublimationCharge <  10 then send_command('Text Sublimation text "       ' .. SublimationCharge .. 'mp     "')
+            elseif SublimationCharge < 100 then send_command('Text Sublimation text "      ' .. SublimationCharge .. 'mp     "')
+            else                                send_command('Text Sublimation text "     ' .. SublimationCharge .. 'mp     "') end
+            
+        end
+        
+        Sublimation.counter = 0
+    
+    end
     
     if undulate.counter > undulationFrequency then
     
@@ -3566,8 +3566,8 @@ end)
 
 
 function sub_job_change(new,old)
-	set_SubJobVars(new)
-	send_command('wait 2;input /lockstyleset 1')
+    set_SubJobVars(new)
+    send_command('wait 2;input /lockstyleset 1')
 end
 
 
@@ -3577,19 +3577,19 @@ function buff_change(name,gain,buff_details)
     
         if   gain == true then Weakened = (BaseMP + SubJobMP) * .75
         else                   Weakened = 0 end
-		
-	elseif name == "SJ Restriction" then
-	
+        
+    elseif name == "SJ Restriction" then
+    
         if   gain == true then SubJobMP = 0
         else                   set_SubJobVars(player.sub_job) end
-		
-	elseif name == "Sublimation: Activated" and gain == true then
-	
-		SublimationStarted = os.time()
-		
-	elseif name == "Sublimation: Complete" and gain == false then
-	
-		send_command('wait .00;Text Sublimation text ""')
+        
+    elseif name == "Sublimation: Activated" and gain == true then
+    
+        SublimationStarted = os.time()
+        
+    elseif name == "Sublimation: Complete" and gain == false then
+    
+        send_command('wait .00;Text Sublimation text ""')
     
     end
 
@@ -3693,26 +3693,26 @@ function determine_idle_set()
             else                                                                                                                sets.IdleSet = set_combine(sets.IdleSet,sets.MaxMP);        IdleSetName = "MaxMP" end
             
             if HasteAccTuning < 1 then
-				if player.tp < FencerSwapTPThreshold and
-				  (buffactive['enfire'] or
-				   buffactive['enblizzard'] or
-				   buffactive['enaero'] or
-				   buffactive['enstone'] or
-				   buffactive['enthunder'] or
-				   buffactive['enwater'] or
-				   buffactive['enfire II'] or
-				   buffactive['enblizzard II'] or
-				   buffactive['enaero II'] or
-				   buffactive['enstone II'] or
-				   buffactive['enthunder II'] or
-				   buffactive['enwater II']) and
-				 ((player.sub_job == "DNC" and player.hp <= 849 and player.mp + Buffer < 200 and os.time() - LastConvert < 500) or
-				  (player.sub_job == "DNC" and player.hp <= 914 and player.mp + Buffer <= BaseMP + sets.AccHaste[10].MP + SubJobMP - Weakened) or
-				   player.hpp <= 75) then
-					sets.IdleSet = set_combine(sets.IdleSet, sets.FencerRing)
-					IdleSetName = IdleSetName .. "|Fencer"
-				end
-			end
+                if player.tp < FencerSwapTPThreshold and
+                  (buffactive['enfire'] or
+                   buffactive['enblizzard'] or
+                   buffactive['enaero'] or
+                   buffactive['enstone'] or
+                   buffactive['enthunder'] or
+                   buffactive['enwater'] or
+                   buffactive['enfire II'] or
+                   buffactive['enblizzard II'] or
+                   buffactive['enaero II'] or
+                   buffactive['enstone II'] or
+                   buffactive['enthunder II'] or
+                   buffactive['enwater II']) and
+                 ((player.sub_job == "DNC" and player.hp <= 849 and player.mp + Buffer < 200 and os.time() - LastConvert < 500) or
+                  (player.sub_job == "DNC" and player.hp <= 914 and player.mp + Buffer <= BaseMP + sets.AccHaste[10].MP + SubJobMP - Weakened) or
+                   player.hpp <= 75) then
+                    sets.IdleSet = set_combine(sets.IdleSet, sets.FencerRing)
+                    IdleSetName = IdleSetName .. "|Fencer"
+                end
+            end
         
         elseif MeleeGear == 'BrickHaste' then -- #PDTHaste
         
@@ -3790,7 +3790,7 @@ function determine_idle_set()
     
         local RestingBuffer = math.floor((os.time() - RestingStarted - 10) * .2) -- ticks grow by 2mp per rest tick, first tick takes 20 seconds
         RestingBuffer = 23 + (RestingBuffer > 0 and RestingBuffer or 0) -- start at 23mp but add nothing until first tick
-		
+        
         if     player.mp + Buffer + RestingBuffer + sets.HMP[10].MPH <= BaseMP + sets.HMP[10].MP + SubJobMP - Weakened                      then sets.IdleSet = set_combine(sets.IdleSet,sets.HMP[10]); IdleSetName = "HMP10"
         elseif player.mp + Buffer + RestingBuffer + sets.HMP[9].MPH  <= BaseMP + sets.HMP[9].MP  + SubJobMP - Weakened                      then sets.IdleSet = set_combine(sets.IdleSet,sets.HMP[9]);  IdleSetName = "HMP9"
         elseif player.mp + Buffer + RestingBuffer + sets.HMP[8].MPH  <= BaseMP + sets.HMP[8].MP  + SubJobMP - Weakened                      then sets.IdleSet = set_combine(sets.IdleSet,sets.HMP[8]);  IdleSetName = "HMP8"
@@ -3876,7 +3876,7 @@ function determine_idle_set()
         
         if     TaruMode == "Off" and IdleMode ~= "MDT" and (moving == true or player.hp >= 999) then sets.IdleSet = set_combine(sets.IdleSet, sets.FastPants);IdleSetName = IdleSetName .. "|Moving"
         elseif TaruMode == "Off" and IdleMode == "MDT" and  moving == true                      then sets.IdleSet = set_combine(sets.IdleSet, sets.FastPants);IdleSetName = IdleSetName .. "|Moving" end
-		
+        
         if player.mp + Buffer <= BaseMP + sets.idle[2].MP + SubJobMP - Weakened and (
                                                                                      string.find(world.zone,'Ashu') or
                                                                                      string.find(world.zone,'Ilrusi') or
@@ -3911,7 +3911,7 @@ end
 
 function set_SubJobVars(Subjob) -- #SubjobVars
 
-	-- if your Subjobs aren't leveled, they won't have the same MP as below, put yours here.
+    -- if your Subjobs aren't leveled, they won't have the same MP as below, put yours here.
         if Subjob == 'BLM' then SubJobMP = 97
     elseif Subjob == 'BLU' then SubJobMP = 59
     elseif Subjob == 'DRK' then SubJobMP = 21
@@ -3921,7 +3921,7 @@ function set_SubJobVars(Subjob) -- #SubjobVars
     elseif Subjob == 'WHM' then SubJobMP = 78
     else                        SubJobMP =  0 end
     
-	-- if you have different sets of gear to maximize your converts, configure that here. Otherwise comment out this section.
+    -- if you have different sets of gear to maximize your converts, configure that here. Otherwise comment out this section.
     if Subjob == 'BLM' or
        Subjob == 'SCH' or
        Subjob == 'SMN' or
@@ -4013,7 +4013,7 @@ function guesstimate_Refresh()
             
         end
     end
-	
+    
     if player.mp <= sets.idle[2].MP + SubJobMP - Weakened then -- Gear Refresh
     
         RefreshPotency = RefreshPotency + 2
@@ -4025,7 +4025,7 @@ function guesstimate_Refresh()
     end
         
     return RefreshPotency
-	
+    
 end
 
 function file_unload(file_name)
@@ -4042,7 +4042,7 @@ function file_unload(file_name)
     send_command('wait .010;Text Selector delete')
     send_command('wait .011;Text Undulation delete')
     send_command('wait .012;Text Sublimation delete')
-	
+    
     send_command('wait .020;Keyboard_Unbind Pause')
     send_command('wait .021;Keyboard_Unbind !Pageup')
     send_command('wait .022;Keyboard_Unbind !Pagedown')
