@@ -17,7 +17,7 @@
                                    888  T88b  Y8b.     Y8b. 888   888   "   888 888  888 Y8b. 888 Y8b.
                                    888   T88b  "Y8888   "Y888P"   888       888 "Y888888  "Y88888  "Y8888
                                                                                               888
-                                                                                         Y8b d88P
+                                                                                         Y8b.d88P
                                                                                           "Y88P"
 
 Read the README.md or this won't work correctly AND you won't understand why!
@@ -34,10 +34,12 @@ function get_sets()
  
     BaseMP = 594      -- Your MP, naked, with a subjob that has no MP.
     ConvertMerits = 5 -- Number of upgrades to Convert Recast
-    MeleePerpCost = 0 -- Switch for allowing avatar perpetuation cost gear to take priority over melee sets.
+    MeleePerpCost = 0 -- Switch for allowing avatar perpetuation cost gear to take priority over melee sets. 1 is on, 0 is off.
     FPSMode = 60      -- change to 30 if using 30 FPS mode
     
     send_command('config FrameRateDivisor 1') -- 60 FPS. Switch to 2, to default to 30 FPS
+    
+    send_command('wait 5;input /lockstyleset 1') -- automatically uses an in game equipment set defined in the macros config, to use as a lockset
 
 -------------------------------
 --                           --
@@ -48,8 +50,8 @@ function get_sets()
     -- Undulation Hot Key
     send_command('wait .000;Keyboard_Bind  Pause    gs c ToggleUndulations') --        Pause    Toggles UndulationsEnabled
     -- Menu Hot Keys
-    send_command('wait .001;Keyboard_Bind !insert   gs c MenuOn')            -- Alt  & insert   Unhides the Menu
-    send_command('wait .002;Keyboard_Bind ^insert   gs c MenuOff')           -- Ctrl & insert   Hides the Menu
+  --send_command('wait .001;Keyboard_Bind !insert   gs c MenuOn')            -- Alt  & insert   Unhides the Menu
+  --send_command('wait .002;Keyboard_Bind ^insert   gs c MenuOff')           -- Ctrl & insert   Hides the Menu
     send_command('wait .003;Keyboard_Bind !Pageup   gs c PrevMenu')          -- Alt  & PageUp   moves menu cursor Up
     send_command('wait .004;Keyboard_Bind !Pagedown gs c NextMenu')          -- Alt  & PageDown moves menu cursor Down
     send_command('wait .005;Keyboard_Bind !Delete   gs c --')                -- Alt  & Delete   shifts menu value to the left
@@ -58,16 +60,16 @@ function get_sets()
     send_command('wait .007;Keyboard_Bind !numpad-  gs c FPS30')             -- Alt & Numpad -  Sets 30 FPS Mode
     send_command('wait .008;Keyboard_Bind !numpad+  gs c FPS60')             -- Alt & Numpad +  Sets 60 FPS Mode
     -- Gear Hot Keys
-    send_command('wait .009;Keyboard_Bind !^1 gs c MPLock')                  -- Ctrl & Alt & 1  Forces Max MP set equip, sending twice locks Max MP set
-    send_command('wait .010;Keyboard_Bind !^2 gs c Reset')                   -- Ctrl & Alt & 2  Resets locked gear
-    send_command('wait .011;Keyboard_Bind !^3 gs c Convert')                 -- Ctrl & Alt & 3  Equips and locks the Convert set for 15 seconds, can be escaped early by using the Reset hotkey.
-    send_command('wait .012;Keyboard_Bind !^9 gs c ToggleEmergencyTank')     -- Ctrl & Alt & 9  Toggles on an EmergencyTank mode, which automatically changes to tank like settings. Resets when toggled again.
-    
-    send_command('wait .013;Keyboard_Bind @1 gs c TaruModeOn')               --    windows & 1  Allows for idling in an HP sacrificing, max MP set. Useful for anticipated MP Restores.
-    send_command('wait .014;Keyboard_Bind @2 gs c TaruModeOff')              --    windows & 2  Turns off Taru Mode
-    
-    send_command('wait .015;Keyboard_Bind !x gs c PDT')                      --        Alt & x  Swaps to a Physical Defense focused set, eschewing Refresh pieces. Sending once allows gear swaps, sending twice locks the set.
-    send_command('wait .016;Keyboard_Bind !z gs c MDT')                      --        Alt & z  Swaps to a Magical Defense focused set, eschewing Refresh pieces. Sending once allows gear swaps, sending twice locks the set.
+  --send_command('wait .009;Keyboard_Bind !^1 gs c MPLock')                  -- Ctrl & Alt & 1  Forces Max MP set equip, sending twice locks Max MP set
+  --send_command('wait .010;Keyboard_Bind !^2 gs c Reset')                   -- Ctrl & Alt & 2  Resets all locked gear modes
+  --send_command('wait .011;Keyboard_Bind !^3 gs c Convert')                 -- Ctrl & Alt & 3  Equips and locks the Convert set for 15 seconds, can be escaped early by using the Reset hotkey.
+  --send_command('wait .012;Keyboard_Bind !^9 gs c ToggleEmergencyTank')     -- Ctrl & Alt & 9  Toggles on an EmergencyTank mode, which automatically changes to tank like settings. Resets when toggled again.
+  --
+  --send_command('wait .013;Keyboard_Bind @1 gs c TaruModeOn')               --    windows & 1  Allows for idling in an HP sacrificing, max MP set. Useful for anticipated MP Restores.
+  --send_command('wait .014;Keyboard_Bind @2 gs c TaruModeOff')              --    windows & 2  Turns off Taru Mode
+  --
+  --send_command('wait .015;Keyboard_Bind !x gs c PDT')                      --        Alt & x  Swaps to a Physical Defense focused set, eschewing Refresh pieces. Sending once allows gear swaps, sending twice locks the set.
+  --send_command('wait .016;Keyboard_Bind !z gs c MDT')                      --        Alt & z  Swaps to a Magical Defense focused set, eschewing Refresh pieces. Sending once allows gear swaps, sending twice locks the set.
 
 
 -------------------------------
@@ -105,7 +107,7 @@ function get_sets()
 
     send_command('wait .100;Text Status      create;wait .001;Text Status      pos '..  Status_X..' '..  Status_Y       ..';wait .001;Text Status      color 230  50   0;wait .001;Text Status      bg_alpha 255;wait .001;Text Status      size 30;wait .001;Text Status      font "Courier New";wait .001;Text Status      bold true')
     send_command('wait .107;Text Sublimation create;wait .001;Text Sublimation pos '..    Menu_X..' '..    Menu_Y       ..';wait .001;Text Sublimation color 200 200 200;wait .001;Text Sublimation bg_alpha 190;wait .001;Text Sublimation size 14;wait .001;Text Sublimation font "Courier New";wait .001;Text Sublimation bold true')
-    send_command('wait .114;Text Undulation  create;wait .001;Text Undulation  pos '..    Menu_X..' '..    Menu_Y +  23 ..';wait .001;Text Undulation  color 50  230  20;wait .001;Text Undulation  bg_alpha 190;wait .001;Text Undulation  size 14;wait .001;Text Undulation  font "Courier New";wait .001;Text Undulation  bold true')
+    send_command('wait .114;Text Undulation  create;wait .001;Text Undulation  pos '..    Menu_X..' '..    Menu_Y +  23 ..';wait .001;Text Undulation  color  50 230  20;wait .001;Text Undulation  bg_alpha 190;wait .001;Text Undulation  size 14;wait .001;Text Undulation  font "Courier New";wait .001;Text Undulation  bold true')
     send_command('wait .121;Text Weapons     create;wait .001;Text Weapons     pos '..    Menu_X..' '..    Menu_Y +  45 ..';wait .001;Text Weapons     color 200 200 200;wait .001;Text Weapons     bg_alpha 190;wait .001;Text Weapons     size 14;wait .001;Text Weapons     font "Courier New";wait .001;Text Weapons     bold true')
     send_command('wait .128;Text Gearset     create;wait .001;Text Gearset     pos '..    Menu_X..' '..    Menu_Y +  68 ..';wait .001;Text Gearset     color 200 200 200;wait .001;Text Gearset     bg_alpha 190;wait .001;Text Gearset     size 14;wait .001;Text Gearset     font "Courier New";wait .001;Text Gearset     bold true')
     send_command('wait .135;Text Tuning      create;wait .001;Text Tuning      pos '..    Menu_X..' '..    Menu_Y +  91 ..';wait .001;Text Tuning      color 200 200 200;wait .001;Text Tuning      bg_alpha 190;wait .001;Text Tuning      size 14;wait .001;Text Tuning      font "Courier New";wait .001;Text Tuning      bold true')
@@ -183,7 +185,6 @@ function get_sets()
 -------------------------------
 
     sets.IdleSet = {}
-    sets.lockstyle = {}
     sets.MaxMP = {}
     sets.TaruMP = {}
     sets.Convert = {}
@@ -294,22 +295,6 @@ function get_sets()
     sets.Obis['Water'] = {waist="Penitent's Rope"}
     sets.Obis['Light'] = {waist="Penitent's Rope"}
     sets.Obis['Dark'] = {waist="Anrin Obi"}
-    
-    send_command('wait 5;input /lockstyleset 1')
-
-
-------------------------------
---                          --
---        Lockstyle         --
---                          --
-------------------------------
-    sets.lockstyle = set_combine(sets.MaxMP, 
-                                 sets.Weapons.Fire,{
-                                 head="Dls. Chapeau +1",
-                                 body="Dls. Tabard +1",
-                                 hands="Dls. Gloves +1",
-                                 legs="Blood Cuisses",
-                                 feet="Duelist's Boots"})
                                  
                                  
 ------------------------------
@@ -503,39 +488,6 @@ function get_sets()
     sets.PDT[4].MP = sets.PDT[3].MP - (sets.MaxMP.headMP - 0)
     sets.PDT[5] = set_combine(sets.PDT[4],{body="Dst. Harness +1"})
     sets.PDT[5].MP = sets.PDT[4].MP - (sets.MaxMP.bodyMP - 0)
-    
-    
--------------------------------
---                           --
---        Fast Pants         --
---                           --
--------------------------------
-    sets.FastPants = {legs="Blood Cuisses"}
-    
-    
--------------------------------
---                           --
---       Fencer's Ring       --
---                           --
--------------------------------
-    sets.FencerRing = {rring="Toreador's Ring", lring="Fencer's Ring"}
-    
-    
--------------------------------
---                           --
---      Balrahn's Ring       --
---  Use this if you have it  --
--------------------------------
-    sets.BalrahnRing = {rring="Balrahn's Ring"}
-    
-    
--------------------------------
---      Urgent Refresh       --
--- This set overrides Melee  --
---  pieces when low MP and   --
---      Convert is down      --
--------------------------------
-    sets.UrgentRefresh = {head="Dls. Chapeau +1", body="Dalmatica"}
 
 
 -------------------------------
@@ -565,6 +517,39 @@ function get_sets()
     sets.MDT[8].MP = sets.MDT[7].MP - (sets.MaxMP.bodyMP - 0)
     sets.MDT[9] = set_combine(sets.MDT[8],{legs="Coral Cuisses +1"})
     sets.MDT[9].MP = sets.MDT[8].MP - (sets.MaxMP.legsMP - 0)
+    
+    
+-------------------------------
+--                           --
+--        Fast Pants         --
+--                           --
+-------------------------------
+    sets.FastPants = {legs="Blood Cuisses"}
+    
+    
+-------------------------------
+--        #FencerRing        --
+--       Fencer's Ring       --
+--  requires HP calc/config  --
+-------------------------------
+    sets.FencerRing = {rring="Toreador's Ring", lring="Fencer's Ring"}
+    
+    
+-------------------------------
+--                           --
+--      Balrahn's Ring       --
+--  Use this if you have it  --
+-------------------------------
+    sets.BalrahnRing = {rring="Balrahn's Ring"}
+    
+    
+-------------------------------
+--      Urgent Refresh       --
+-- This set overrides Melee  --
+--  pieces when low MP and   --
+--      Convert is down      --
+-------------------------------
+    sets.UrgentRefresh = {head="Dls. Chapeau +1", body="Dalmatica"}
 
 
 ------------------------------
@@ -666,7 +651,7 @@ function get_sets()
     sets.midcast.DINT[9].MP = sets.midcast.DINT[8].MP - (sets.MaxMP.waistMP - 0)
     sets.midcast.DINT[10]= set_combine(sets.midcast.DINT[9],{lring="Snow Ring"})
     sets.midcast.DINT[10].MP= sets.midcast.DINT[9].MP - (sets.MaxMP.lringMP - 0)
-    sets.midcast.DINT[11]= set_combine(sets.midcast.DINT[10],{ammo="Phantom Tathlum"})
+    sets.midcast.DINT[11]= set_combine(sets.midcast.DINT[10],{ammo="Phtm. Tathlum"})
     sets.midcast.DINT[11].MP= sets.midcast.DINT[10].MP - (sets.MaxMP.ammoMP - 10)
 
 
@@ -698,7 +683,7 @@ function get_sets()
     sets.midcast.DINTObi[9].MP = sets.midcast.DINTObi[8].MP - (sets.MaxMP.handsMP - 0)
     sets.midcast.DINTObi[10]= set_combine(sets.midcast.DINTObi[9],{lring="Snow Ring"})
     sets.midcast.DINTObi[10].MP= sets.midcast.DINTObi[9].MP- (sets.MaxMP.lringMP - 0)
-    sets.midcast.DINTObi[11]= set_combine(sets.midcast.DINTObi[10],{ammo="Phantom Tathlum"})
+    sets.midcast.DINTObi[11]= set_combine(sets.midcast.DINTObi[10],{ammo="Phtm. Tathlum"})
     sets.midcast.DINTObi[11].MP= sets.midcast.DINTObi[10].MP- (sets.MaxMP.ammoMP - 10)
 
 
@@ -707,19 +692,19 @@ function get_sets()
 --      Enfeebling (INT)     --
 --           MAcc            --
 -------------------------------
-    -- INT +24 | Dark Skill +15 | MAcc +16 | Haste + 2% --
+    -- INT +25 | Enfeebling Skill +42 | MAcc +12 | Haste + 2% --
     sets.midcast.EINTMacc[0] = set_combine(sets.MaxMP,              {head="Dls. Chapeau +1"})
     sets.midcast.EINTMacc[0].MP = sets.MaxMP.MP               - (sets.MaxMP.headMP - 14)
     sets.midcast.EINTMacc[1] = set_combine(sets.midcast.EINTMacc[0],{body="Wlk. Tabard +1"})
     sets.midcast.EINTMacc[1].MP = sets.midcast.EINTMacc[0].MP - (sets.MaxMP.bodyMP - 34)
     sets.midcast.EINTMacc[2] = set_combine(sets.midcast.EINTMacc[1],{neck="Enfeebling Torque"})
     sets.midcast.EINTMacc[2].MP = sets.midcast.EINTMacc[1].MP - (sets.MaxMP.neckMP - 0)
-    sets.midcast.EINTMacc[3] = set_combine(sets.midcast.EINTMacc[2],{feet="Goliard Clogs"})
-    sets.midcast.EINTMacc[3].MP = sets.midcast.EINTMacc[2].MP - (sets.MaxMP.feetMP - 0)
-    sets.midcast.EINTMacc[4] = set_combine(sets.midcast.EINTMacc[3],{rring="Snow Ring"})
-    sets.midcast.EINTMacc[4].MP = sets.midcast.EINTMacc[3].MP - (sets.MaxMP.rringMP - 0)
-    sets.midcast.EINTMacc[5] = set_combine(sets.midcast.EINTMacc[4],{legs="Mahatma Slops"})
-    sets.midcast.EINTMacc[5].MP = sets.midcast.EINTMacc[4].MP - (sets.MaxMP.legsMP - 0)
+    sets.midcast.EINTMacc[3] = set_combine(sets.midcast.EINTMacc[2],{legs="Nashira Seraweels"})
+    sets.midcast.EINTMacc[3].MP = sets.midcast.EINTMacc[2].MP - (sets.MaxMP.legsMP - 0)
+    sets.midcast.EINTMacc[4] = set_combine(sets.midcast.EINTMacc[3],{feet="Goliard Clogs"})
+    sets.midcast.EINTMacc[4].MP = sets.midcast.EINTMacc[3].MP - (sets.MaxMP.feetMP - 0)
+    sets.midcast.EINTMacc[5] = set_combine(sets.midcast.EINTMacc[4],{rring="Snow Ring"})
+    sets.midcast.EINTMacc[5].MP = sets.midcast.EINTMacc[4].MP - (sets.MaxMP.rringMP - 0)
     sets.midcast.EINTMacc[6] = set_combine(sets.midcast.EINTMacc[5],{back="Prism Cape"})
     sets.midcast.EINTMacc[6].MP = sets.midcast.EINTMacc[5].MP - (sets.MaxMP.backMP - 10)
     sets.midcast.EINTMacc[7] = set_combine(sets.midcast.EINTMacc[6],{waist="Penitent's Rope"})
@@ -730,7 +715,7 @@ function get_sets()
     sets.midcast.EINTMacc[9].MP = sets.midcast.EINTMacc[8].MP - (sets.MaxMP.ear1MP - 5) - (sets.MaxMP.ear2MP - 0)
     sets.midcast.EINTMacc[10]= set_combine(sets.midcast.EINTMacc[9],{hands="Goliard Cuffs"})
     sets.midcast.EINTMacc[10].MP= sets.midcast.EINTMacc[9].MP - (sets.MaxMP.handsMP - 0)
-    sets.midcast.EINTMacc[11]= set_combine(sets.midcast.EINTMacc[10],{ammo="Phantom Tathlum"})
+    sets.midcast.EINTMacc[11]= set_combine(sets.midcast.EINTMacc[10],{ammo="Phtm. Tathlum"})
     sets.midcast.EINTMacc[11].MP= sets.midcast.EINTMacc[10].MP- (sets.MaxMP.ammoMP - 10)
 
 
@@ -762,7 +747,7 @@ function get_sets()
     sets.midcast.EINTHaste[9].MP = sets.midcast.EINTHaste[8].MP - (sets.MaxMP.ear1MP - 5) - (sets.MaxMP.ear2MP - 0)
     sets.midcast.EINTHaste[10]= set_combine(sets.midcast.EINTHaste[9],{lring="Snow Ring"})
     sets.midcast.EINTHaste[10].MP= sets.midcast.EINTHaste[9].MP - (sets.MaxMP.lringMP - 0)
-    sets.midcast.EINTHaste[11]= set_combine(sets.midcast.EINTHaste[10],{ammo="Phantom Tathlum"})
+    sets.midcast.EINTHaste[11]= set_combine(sets.midcast.EINTHaste[10],{ammo="Phtm. Tathlum"})
     sets.midcast.EINTHaste[11].MP= sets.midcast.EINTHaste[10].MP- (sets.MaxMP.ammoMP - 10)
 
 
@@ -889,7 +874,7 @@ function get_sets()
     sets.midcast.NINTMacc[9].MP = sets.midcast.NINTMacc[8].MP - (sets.MaxMP.waistMP - 0)
     sets.midcast.NINTMacc[10]= set_combine(sets.midcast.NINTMacc[9],{lring="Snow Ring"})
     sets.midcast.NINTMacc[10].MP= sets.midcast.NINTMacc[9].MP- (sets.MaxMP.lringMP - 0)
-    sets.midcast.NINTMacc[11]= set_combine(sets.midcast.NINTMacc[10],{ammo="Phantom Tathlum"})
+    sets.midcast.NINTMacc[11]= set_combine(sets.midcast.NINTMacc[10],{ammo="Phtm. Tathlum"})
     sets.midcast.NINTMacc[11].MP= sets.midcast.NINTMacc[10].MP- (sets.MaxMP.ammoMP - 10)
 
 
@@ -921,7 +906,7 @@ function get_sets()
     sets.midcast.NINTMaccObi[9].MP = sets.midcast.NINTMaccObi[8].MP - (sets.MaxMP.handsMP - 0)
     sets.midcast.NINTMaccObi[10]= set_combine(sets.midcast.NINTMaccObi[9],{lring="Snow Ring"})
     sets.midcast.NINTMaccObi[10].MP= sets.midcast.NINTMaccObi[9].MP- (sets.MaxMP.lringMP - 0)
-    sets.midcast.NINTMaccObi[11]= set_combine(sets.midcast.NINTMaccObi[10],{ammo="Phantom Tathlum"})
+    sets.midcast.NINTMaccObi[11]= set_combine(sets.midcast.NINTMaccObi[10],{ammo="Phtm. Tathlum"})
     sets.midcast.NINTMaccObi[11].MP= sets.midcast.NINTMaccObi[10].MP- (sets.MaxMP.ammoMP - 10)
 
 
@@ -930,7 +915,7 @@ function get_sets()
 --         Elemental         --
 --          Potency          --
 -------------------------------
-    -- INT +39 | Elemental Skill +20 | MAB +21 | MAcc +4 --
+    -- INT +44 | Elemental Skill +20 | MAB +21 | MAcc +4 --
     sets.midcast.NINTPotency[0] = set_combine(sets.MaxMP,                 {head="Wlk. Chapeau +1"})
     sets.midcast.NINTPotency[0].MP = sets.MaxMP.MP                  - (sets.MaxMP.headMP - 25)
     sets.midcast.NINTPotency[1] = set_combine(sets.midcast.NINTPotency[0],{legs="Duelist's Tights"})
@@ -953,7 +938,7 @@ function get_sets()
     sets.midcast.NINTPotency[9].MP = sets.midcast.NINTPotency[8].MP - (sets.MaxMP.waistMP - 0)
     sets.midcast.NINTPotency[10]= set_combine(sets.midcast.NINTPotency[9],{lring="Snow Ring"})
     sets.midcast.NINTPotency[10].MP= sets.midcast.NINTPotency[9].MP- (sets.MaxMP.lringMP - 0)
-    sets.midcast.NINTPotency[11]= set_combine(sets.midcast.NINTPotency[10],{ammo="Phantom Tathlum"})
+    sets.midcast.NINTPotency[11]= set_combine(sets.midcast.NINTPotency[10],{ammo="Phtm. Tathlum"})
     sets.midcast.NINTPotency[11].MP= sets.midcast.NINTPotency[10].MP- (sets.MaxMP.ammoMP - 10)
     sets.midcast.NINTPotency[12]= set_combine(sets.midcast.NINTPotency[11],{ear2="Morion Earring +1"})
     sets.midcast.NINTPotency[12].MP= sets.midcast.NINTPotency[11].MP- (sets.MaxMP.ear2MP - 5)
@@ -966,7 +951,7 @@ function get_sets()
 --         Elemental         --
 --        Potency Obi        --
 -------------------------------
-    -- INT +44 | Elemental Skill +20 | MAB +21 | MAcc +4 --
+    -- INT +39 | Elemental Skill +20 | MAB +21 | MAcc +4 --
     sets.midcast.NINTPotencyObi[0] = set_combine(sets.MaxMP,                    {head="Wlk. Chapeau +1"})
     sets.midcast.NINTPotencyObi[0].MP = sets.MaxMP.MP                     - (sets.MaxMP.headMP - 25)
     sets.midcast.NINTPotencyObi[1] = set_combine(sets.midcast.NINTPotencyObi[0],{legs="Duelist's Tights"})
@@ -989,7 +974,7 @@ function get_sets()
     sets.midcast.NINTPotencyObi[9].MP = sets.midcast.NINTPotencyObi[8].MP - (sets.MaxMP.backMP - 10)
     sets.midcast.NINTPotencyObi[10]= set_combine(sets.midcast.NINTPotencyObi[9],{lring="Snow Ring"})
     sets.midcast.NINTPotencyObi[10].MP= sets.midcast.NINTPotencyObi[9].MP - (sets.MaxMP.lringMP - 0)
-    sets.midcast.NINTPotencyObi[11]= set_combine(sets.midcast.NINTPotencyObi[10],{ammo="Phantom Tathlum"})
+    sets.midcast.NINTPotencyObi[11]= set_combine(sets.midcast.NINTPotencyObi[10],{ammo="Phtm. Tathlum"})
     sets.midcast.NINTPotencyObi[11].MP= sets.midcast.NINTPotencyObi[10].MP- (sets.MaxMP.ammoMP - 10)
     sets.midcast.NINTPotencyObi[12]= set_combine(sets.midcast.NINTPotencyObi[11],{ear2="Morion Earring +1"})
     sets.midcast.NINTPotencyObi[12].MP= sets.midcast.NINTPotencyObi[11].MP- (sets.MaxMP.ear2MP - 5)
@@ -1119,7 +1104,7 @@ function get_sets()
     sets.midcast.Spikes[9].MP = sets.midcast.Spikes[8].MP - (sets.MaxMP.ear1MP - 5)
     sets.midcast.Spikes[10]= set_combine(sets.midcast.Spikes[9],{ear2="Morion Earring"})
     sets.midcast.Spikes[10].MP= sets.midcast.Spikes[9].MP - (sets.MaxMP.ear2MP - 4)
-    sets.midcast.Spikes[11]= set_combine(sets.midcast.Spikes[10],{ammo="Phantom Tathlum"})
+    sets.midcast.Spikes[11]= set_combine(sets.midcast.Spikes[10],{ammo="Phtm. Tathlum"})
     sets.midcast.Spikes[11].MP= sets.midcast.Spikes[10].MP- (sets.MaxMP.ammoMP - 10)
     
 
@@ -1151,7 +1136,7 @@ function get_sets()
     sets.midcast.EleDebuffs[9].MP = sets.midcast.EleDebuffs[8].MP - (sets.MaxMP.ear1MP - 5)
     sets.midcast.EleDebuffs[10]= set_combine(sets.midcast.EleDebuffs[9],{ear2="Morion Earring"})
     sets.midcast.EleDebuffs[10].MP= sets.midcast.EleDebuffs[9].MP - (sets.MaxMP.ear2MP - 4)
-    sets.midcast.EleDebuffs[11]= set_combine(sets.midcast.EleDebuffs[10],{ammo="Phantom Tathlum"})
+    sets.midcast.EleDebuffs[11]= set_combine(sets.midcast.EleDebuffs[10],{ammo="Phtm. Tathlum"})
     sets.midcast.EleDebuffs[11].MP= sets.midcast.EleDebuffs[10].MP- (sets.MaxMP.ammoMP - 10)
     
 
@@ -1182,7 +1167,7 @@ function get_sets()
     sets.midcast.Enmity[8].MP = sets.midcast.Enmity[7].MP - (sets.MaxMP.waistMP - 0)
     sets.midcast.Enmity[9] = set_combine(sets.midcast.Enmity[8],{head="Baron's Chapeau"})
     sets.midcast.Enmity[9].MP = sets.midcast.Enmity[8].MP - (sets.MaxMP.headMP - 0)
-    sets.midcast.Enmity[10]= set_combine(sets.midcast.Enmity[9],{ammo="Phantom Tathlum"})
+    sets.midcast.Enmity[10]= set_combine(sets.midcast.Enmity[9],{ammo="Phtm. Tathlum"})
     sets.midcast.Enmity[10].MP= sets.midcast.Enmity[9].MP- (sets.MaxMP.ammoMP - 10)
     sets.midcast.Enmity[11]= set_combine(sets.midcast.Enmity[10],{body="Dst. Harness +1"})
     sets.midcast.Enmity[11].MP= sets.midcast.Enmity[10].MP - (sets.MaxMP.bodyMP - 0)
@@ -1286,7 +1271,7 @@ function get_sets()
     -- These last 2 swaps are enabled/disabled by the menu --
     sets.AccHaste[11]= set_combine(sets.AccHaste[10],{rring="Toreador's Ring", lring="Toreador's Ring"})
     sets.AccHaste[11].MP= sets.AccHaste[10].MP -- no change
-    -- Haste 19% | Accuracy +53 | Attack + 9 | Sword Skill + 5 | Double Attack +5% or Attack + 6 --
+    -- Haste 19% | Accuracy +55 | Attack + 3 | Sword Skill + 5 | Double Attack +5% or Attack + 6 --
     sets.AccHaste[12]= set_combine(sets.AccHaste[11],{body="Scp. Harness +1"})
     sets.AccHaste[12].MP= sets.AccHaste[11].MP- (42 - 0) -- Second Body Swap
     
@@ -1518,7 +1503,7 @@ function get_sets()
     sets.ws['Gust Slash'][9].MP = sets.ws['Gust Slash'][8].MP - (sets.MaxMP.bodyMP - 0)
     sets.ws['Gust Slash'][10]= set_combine(sets.ws['Gust Slash'][9],{ear2="Morion Earring"})
     sets.ws['Gust Slash'][10].MP= sets.ws['Gust Slash'][9].MP - (sets.MaxMP.ear2MP - 4)
-    sets.ws['Gust Slash'][11]= set_combine(sets.ws['Gust Slash'][10],{ammo="Phantom Tathlum"})
+    sets.ws['Gust Slash'][11]= set_combine(sets.ws['Gust Slash'][10],{ammo="Phtm. Tathlum"})
     sets.ws['Gust Slash'][11].MP= sets.ws['Gust Slash'][10].MP- (sets.MaxMP.ammoMP - 10)
     sets.ws['Gust Slash'][12]= sets.ws['Gust Slash'][11]
     sets.ws['Gust Slash'][12].MP= sets.ws['Gust Slash'][11].MP
@@ -1617,7 +1602,7 @@ function get_sets()
     sets.ws['Burning Blade'][8].MP = sets.ws['Burning Blade'][7].MP - (sets.MaxMP.lringMP - 0)
     sets.ws['Burning Blade'][9] = set_combine(sets.ws['Burning Blade'][8],{body="Errant Hpl."})
     sets.ws['Burning Blade'][9].MP = sets.ws['Burning Blade'][8].MP - (sets.MaxMP.bodyMP - 0)
-    sets.ws['Burning Blade'][10]= set_combine(sets.ws['Burning Blade'][9],{ammo="Phantom Tathlum"})
+    sets.ws['Burning Blade'][10]= set_combine(sets.ws['Burning Blade'][9],{ammo="Phtm. Tathlum"})
     sets.ws['Burning Blade'][10].MP= sets.ws['Burning Blade'][9].MP - (sets.MaxMP.ammoMP - 10)
     sets.ws['Burning Blade'][11]= sets.ws['Burning Blade'][10]
     sets.ws['Burning Blade'][11].MP= sets.ws['Burning Blade'][10].MP
@@ -1997,16 +1982,16 @@ function configureTPsets()
     elseif Weapon == 'JoyKraken' or Weapon == 'EnhanceKraken' then
     
         sets.Accuracy[9] = set_combine(sets.Accuracy[8], {ear1="Suppanomimi"})
-        sets.Accuracy[10]= set_combine(sets.Accuracy[9], {ear2="Optical Earring"})
+        sets.Accuracy[10]= set_combine(sets.Accuracy[9], {ear2="Pixie Earring"})
         sets.Accuracy[11]= set_combine(sets.Accuracy[10],{ammo="Astrolabe"})
         sets.AccHaste[8] = set_combine(sets.AccHaste[7], {ear1="Suppanomimi"})
-        sets.AccHaste[9] = set_combine(sets.AccHaste[8], {ear2="Optical Earring"})
+        sets.AccHaste[9] = set_combine(sets.AccHaste[8], {ear2="Pixie Earring"})
         sets.AccHaste[10]= set_combine(sets.AccHaste[9], {ammo="Astrolabe"})
         sets.PDTHaste[8] = set_combine(sets.PDTHaste[7], {ear1="Suppanomimi"})
-        sets.PDTHaste[9] = set_combine(sets.PDTHaste[8], {ear2="Optical Earring"})
+        sets.PDTHaste[9] = set_combine(sets.PDTHaste[8], {ear2="Pixie Earring"})
         sets.PDTHaste[10]= set_combine(sets.PDTHaste[9], {ammo="Astrolabe"})
         sets.PDTMelee[11]= set_combine(sets.PDTMelee[10],{ear1="Suppanomimi"})
-        sets.PDTMelee[12]= set_combine(sets.PDTMelee[11],{ear2="Optical Earring"})
+        sets.PDTMelee[12]= set_combine(sets.PDTMelee[11],{ear2="Pixie Earring"})
         
     elseif Weapon == 'JoyGenbu' or Weapon == "EnhanceJoy" or Weapon == 'Enmity' then
     
@@ -2038,16 +2023,16 @@ function configureTPsets()
         
     elseif Weapon == 'Club' then
     
-        sets.Accuracy[9] = set_combine(sets.Accuracy[8], {ear1="Merman's Earring"})
+        sets.Accuracy[9] = set_combine(sets.Accuracy[8], {ear1="Pixie Earring"})
         sets.Accuracy[10]= set_combine(sets.Accuracy[9], {ear2="Optical Earring"})
         sets.Accuracy[11]= set_combine(sets.Accuracy[10],{ammo="Astrolabe"})
-        sets.AccHaste[8] = set_combine(sets.AccHaste[7], {ear1="Merman's Earring"})
+        sets.AccHaste[8] = set_combine(sets.AccHaste[7], {ear1="Pixie Earring"})
         sets.AccHaste[9] = set_combine(sets.AccHaste[8], {ear2="Optical Earring"})
         sets.AccHaste[10]= set_combine(sets.AccHaste[9], {ammo="Astrolabe"})
-        sets.PDTHaste[8] = set_combine(sets.PDTHaste[7], {ear1="Merman's Earring"})
+        sets.PDTHaste[8] = set_combine(sets.PDTHaste[7], {ear1="Pixie Earring"})
         sets.PDTHaste[9] = set_combine(sets.PDTHaste[8], {ear2="Optical Earring"})
         sets.PDTHaste[10]= set_combine(sets.PDTHaste[9], {ammo="Astrolabe"})
-        sets.PDTMelee[11]= set_combine(sets.PDTMelee[10],{ear1="Merman's Earring"})
+        sets.PDTMelee[11]= set_combine(sets.PDTMelee[10],{ear1="Pixie Earring"})
         sets.PDTMelee[12]= set_combine(sets.PDTMelee[11],{ear2="Optical Earring"})
         
     end
@@ -2966,7 +2951,7 @@ function determine_idle_set()
             elseif                               player.mp + Buffer <= BaseMP + sets.AccHaste[0].MP  + SubJobMP - Weakened then sets.IdleSet = set_combine(sets.IdleSet,sets.AccHaste[0]); IdleSetName = "AccHaste0"
             else                                                                                                                sets.IdleSet = set_combine(sets.IdleSet,sets.MaxMP);       IdleSetName = "MaxMP" end
             
-            if AccHasteTuning < 1 then
+            if AccHasteTuning < 1 then -- #FencerRing
                 if player.tp < FencerSwapTPThreshold and
                   (buffactive['enfire'] or
                    buffactive['enblizzard'] or
@@ -3241,11 +3226,7 @@ function self_command(command)
         if TaruMode == 'Off' then equip(sets.MaxMP)
         else                      equip(sets.TaruMP) end
     
-        if LockMP == 1 then
-            
-            send_command('gs disable all')
-            
-        end
+        if LockMP == 1 then send_command('gs disable all') end
         
         LockMP = 1
         
@@ -3360,7 +3341,7 @@ function self_command(command)
         else                                         Selector_Y = Selector_Y + 23 end
         
         send_command('Text Selector pos '.. Selector_X .. ' ' .. Selector_Y)
-            
+        
         if     Menu == 'Weapons'    then Menu = "MeleeGear"
         elseif Menu == 'MeleeGear'  then Menu = "Tuning"
         elseif Menu == 'Tuning'     then Menu = "Enmity"
@@ -3645,6 +3626,9 @@ function self_command(command)
     end
     
     if CastingSpell == 0 and (command == 'Reset' or command == 'SetWeapon' or command == 'MDT' or command == 'PDT') then determine_idle_set() end
+	
+	--if   buffactive['Food'] then send_command('wait .184;Text Status text')
+	--else                         send_command('wait .184;Text Status text Food') end
     
     
     if PetExists ~= pet.isvalid then     
@@ -4056,21 +4040,21 @@ function file_unload(file_name)
     send_command('wait .012;Text Sublimation delete')
     
     send_command('wait .020;Keyboard_Unbind Pause')
-    send_command('wait .021;Keyboard_Unbind !insert')
-    send_command('wait .022;Keyboard_Unbind ^insert')
+  --send_command('wait .021;Keyboard_Unbind !insert')
+  --send_command('wait .022;Keyboard_Unbind ^insert')
     send_command('wait .023;Keyboard_Unbind !Pageup')
     send_command('wait .024;Keyboard_Unbind !Pagedown')
     send_command('wait .025;Keyboard_Unbind !Delete')
     send_command('wait .026;Keyboard_Unbind !End')
-    send_command('wait .027;Keyboard_Unbind !numpad-')
-    send_command('wait .028;Keyboard_Unbind !numpad+')
-    send_command('wait .029;Keyboard_Unbind !^1')
-    send_command('wait .030;Keyboard_Unbind !^2')
-    send_command('wait .031;Keyboard_Unbind !^3')
-    send_command('wait .032;Keyboard_Unbind !^9')
-    send_command('wait .033;Keyboard_Unbind @1')
-    send_command('wait .034;Keyboard_Unbind @2')
-    send_command('wait .035;Keyboard_Unbind !x')
-    send_command('wait .036;Keyboard_Unbind !z')
+  --send_command('wait .027;Keyboard_Unbind !numpad-')
+  --send_command('wait .028;Keyboard_Unbind !numpad+')
+  --send_command('wait .029;Keyboard_Unbind !^1')
+  --send_command('wait .030;Keyboard_Unbind !^2')
+  --send_command('wait .031;Keyboard_Unbind !^3')
+  --send_command('wait .032;Keyboard_Unbind !^9')
+  --send_command('wait .033;Keyboard_Unbind @1')
+  --send_command('wait .034;Keyboard_Unbind @2')
+  --send_command('wait .035;Keyboard_Unbind !x')
+  --send_command('wait .036;Keyboard_Unbind !z')
     
 end                   
